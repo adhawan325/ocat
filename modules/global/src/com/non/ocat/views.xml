@@ -13,4 +13,7 @@
         <property name="client" view="_minimal"/>
         <property name="relatedCase" view="_minimal"/>
     </view>
+    <view entity="ocat_InterviewConfig" name="interviewConfig-view" extends="_local">
+        <property name="parent" view="_minimal"/>
+    </view>
 </views>

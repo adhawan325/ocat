@@ -10,5 +10,6 @@
         <class>com.non.ocat.entity.Client</class>
         <class>com.non.ocat.entity.CaseStatusConfig</class>
         <class>com.non.ocat.entity.GenderConfig</class>
+        <class>com.non.ocat.entity.InterviewConfig</class>
     </persistence-unit>
 </persistence>

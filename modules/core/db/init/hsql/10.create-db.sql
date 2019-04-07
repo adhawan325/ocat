@@ -55,6 +55,13 @@ create table OCAT_QUESTIONNAIRE (
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
     --
+    INTERVIEW_SECTION_ID varchar(36),
+    QUESTION_TEXT longvarchar,
+    NEEDS_TEXT boolean,
+    PARENT_ID varchar(36),
+    BEGIN_DATE date,
+    END_DATE date,
+    --
     primary key (ID)
 )^
 -- end OCAT_QUESTIONNAIRE
@@ -131,3 +138,23 @@ create table OCAT_CLIENT (
     primary key (ID)
 )^
 -- end OCAT_CLIENT
+-- begin OCAT_INTERVIEW_CONFIG
+create table OCAT_INTERVIEW_CONFIG (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    ITEM_CODE varchar(255),
+    ITEM_NAME longvarchar,
+    PARENT_ID varchar(36),
+    BEGIN_DATE date,
+    END_DATE date,
+    --
+    primary key (ID)
+)^
+-- end OCAT_INTERVIEW_CONFIG
