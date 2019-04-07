@@ -1,0 +1,18 @@
+-- begin OCAT_CW_CASE
+alter table OCAT_CW_CASE add constraint FK_OCAT_CW_CASE_ON_CLIENT foreign key (CLIENT_ID) references OCAT_CLIENT(ID)^
+alter table OCAT_CW_CASE add constraint FK_OCAT_CW_CASE_ON_OWNER foreign key (OWNER_ID) references SEC_USER(ID)^
+alter table OCAT_CW_CASE add constraint FK_OCAT_CW_CASE_ON_STATUS foreign key (STATUS_ID) references OCAT_CASE_STATUS_CONFIG(ID)^
+create index IDX_OCAT_CW_CASE_ON_CLIENT on OCAT_CW_CASE (CLIENT_ID)^
+create index IDX_OCAT_CW_CASE_ON_OWNER on OCAT_CW_CASE (OWNER_ID)^
+create index IDX_OCAT_CW_CASE_ON_STATUS on OCAT_CW_CASE (STATUS_ID)^
+-- end OCAT_CW_CASE
+-- begin OCAT_INTERVIEW
+alter table OCAT_INTERVIEW add constraint FK_OCAT_INTERVIEW_ON_CLIENT foreign key (CLIENT_ID) references OCAT_CLIENT(ID)^
+alter table OCAT_INTERVIEW add constraint FK_OCAT_INTERVIEW_ON_RELATED_CASE foreign key (RELATED_CASE_ID) references OCAT_CW_CASE(ID)^
+create index IDX_OCAT_INTERVIEW_ON_CLIENT on OCAT_INTERVIEW (CLIENT_ID)^
+create index IDX_OCAT_INTERVIEW_ON_RELATED_CASE on OCAT_INTERVIEW (RELATED_CASE_ID)^
+-- end OCAT_INTERVIEW
+-- begin OCAT_CLIENT
+alter table OCAT_CLIENT add constraint FK_OCAT_CLIENT_ON_GENDER foreign key (GENDER_ID) references OCAT_GENDER_CONFIG(ID)^
+create index IDX_OCAT_CLIENT_ON_GENDER on OCAT_CLIENT (GENDER_ID)^
+-- end OCAT_CLIENT

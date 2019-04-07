@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://browseCaption"
+        focusComponent="interviewsTable"
+        messagesPack="com.non.ocat.web.interview">
+    <data readOnly="true">
+        <collection id="interviewsDc"
+                    class="com.non.ocat.entity.Interview"
+                    view="interview-view">
+            <loader id="interviewsDl">
+                <query>
+                    <![CDATA[select e from ocat_Interview e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="interviewsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="interviewsTable"
+                dataLoader="interviewsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="interviewsTable"
+                    width="100%"
+                    dataContainer="interviewsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="client"/>
+                <column id="relatedCase"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="interviewsTable.create"/>
+                <button id="editBtn" action="interviewsTable.edit"/>
+                <button id="removeBtn" action="interviewsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

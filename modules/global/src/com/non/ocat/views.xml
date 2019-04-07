@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<views xmlns="http://schemas.haulmont.com/cuba/view.xsd">
+
+    <view entity="ocat_Client" name="client-view" extends="_local">
+        <property name="gender" view="_minimal"/>
+    </view>
+    <view entity="ocat_CWCase" name="cWCase-view" extends="_local">
+        <property name="client" view="_minimal"/>
+        <property name="owner" view="_minimal"/>
+        <property name="status" view="_minimal"/>
+    </view>
+    <view entity="ocat_Interview" name="interview-view" extends="_local">
+        <property name="client" view="_minimal"/>
+        <property name="relatedCase" view="_minimal"/>
+    </view>
+</views>
