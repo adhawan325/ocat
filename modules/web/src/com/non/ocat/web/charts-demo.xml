@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:chart="http://schemas.haulmont.com/charts/charts.xsd"
+        caption="msg://caption"
+        messagesPack="com.non.ocat.web">
+    <data>
+    </data>
+    <layout>
+
+        <grid spacing="true">
+            <columns count="2"/>
+            <rows>
+                <row>
+                    <chart:pieChart id="pieChart"
+                                    titleField="key"
+                                    valueField="value" caption="Cases by Status" rowspan="1" colspan="1">
+                        <chart:data>
+                            <chart:item>
+                                <chart:property name="key" value="New"/>
+                                <chart:property name="value" value="70" type="int"/>
+                            </chart:item>
+                            <chart:item>
+                                <chart:property name="key" value="Interview Scheduled"/>
+                                <chart:property name="value" value="20" type="int"/>
+                            </chart:item>
+                            <chart:item>
+                                <chart:property name="key" value="No Show"/>
+                                <chart:property name="value" value="10" type="int"/>
+                            </chart:item>
+                        </chart:data>
+                        <chart:export fileName="case-by-status" position="TOP_RIGHT">
+
+                        </chart:export>
+                    </chart:pieChart>
+                    <chart:pieChart id="pieChart2"
+                                    titleField="key"
+                                    valueField="value" caption="Cases by Status" rowspan="1" colspan="1">
+                        <chart:data>
+                            <chart:item>
+                                <chart:property name="key" value="New"/>
+                                <chart:property name="value" value="70" type="int"/>
+                            </chart:item>
+                            <chart:item>
+                                <chart:property name="key" value="Interview Scheduled"/>
+                                <chart:property name="value" value="20" type="int"/>
+                            </chart:item>
+                            <chart:item>
+                                <chart:property name="key" value="No Show"/>
+                                <chart:property name="value" value="10" type="int"/>
+                            </chart:item>
+                        </chart:data>
+                        <chart:export fileName="my-chart" position="TOP_RIGHT">
+                            <chart:menu>
+                                <chart:item label="PNG" title="Save as PNG" format="PNG"/>
+                                <chart:item label="JPG" title="Save as JPG" format="JPG"/>
+                                <chart:item label="CSV" title="Save as CSV" format="CSV"/>
+                                <chart:item label="PDF" title="Save as PDF" format="PDF"/>
+                            </chart:menu>
+                        </chart:export>
+                    </chart:pieChart>
+                </row>
+                <row>
+                    <chart:serialChart additionalFields="optional"
+                                       addClassNames="true"
+                                       categoryField="year"
+                                       startDuration="1">
+                        <chart:data>
+                            <chart:item>
+                                <chart:property name="year" value="2017"/>
+                                <chart:property name="value" value="10000" type="int"/>
+                            </chart:item>
+                            <chart:item>
+                                <chart:property name="year" value="2018"/>
+                                <chart:property name="value" value="20000" type="int"/>
+                            </chart:item>
+                            <chart:item>
+                                <chart:property name="year" value="2019"/>
+                                <chart:property name="value" value="15000" type="int"/>
+                            </chart:item>
+                        </chart:data>
+                        <chart:export fileName="cases-by-year" position="TOP_RIGHT">
+
+                        </chart:export>
+                        <chart:graphs>
+                            <chart:graph title="Cases By Year"
+                                         type="COLUMN"
+                                         fillAlphas=".8"
+                                         valueField="value" />
+                        </chart:graphs>
+                    </chart:serialChart>
+                </row>
+            </rows>
+        </grid>
+
+    </layout>
+</window>
