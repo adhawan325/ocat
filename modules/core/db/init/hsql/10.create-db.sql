@@ -154,6 +154,7 @@ create table OCAT_INTERVIEW_CONFIG (
     PARENT_ID varchar(36),
     BEGIN_DATE date,
     END_DATE date,
+    ITEM_TYPE varchar(255),
     --
     primary key (ID)
 )^

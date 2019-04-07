@@ -3,5 +3,6 @@
     <menu id="application-ocat" insertBefore="administration">
         <item screen="ocat_Interview.browse"/>
         <item screen="ocat_InterviewConfig.browse"/>
+        <item screen="ocat_CWCase.browse"/>
     </menu>
 </menu-config>

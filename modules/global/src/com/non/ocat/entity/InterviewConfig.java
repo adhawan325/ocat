@@ -29,6 +29,17 @@ public class InterviewConfig extends StandardEntity {
     @Column(name = "END_DATE")
     protected Date endDate;
 
+    @Column(name = "ITEM_TYPE")
+    protected String itemType;
+
+    public String getItemType() {
+        return itemType;
+    }
+
+    public void setItemType(String itemType) {
+        this.itemType = itemType;
+    }
+
     public Date getEndDate() {
         return endDate;
     }
