@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://editorCaption"
+        focusComponent="form"
+        messagesPack="com.non.ocat.web.interviewresponse">
+    <data>
+        <instance id="interviewResponseDc"
+                  class="com.non.ocat.entity.InterviewResponse"
+                  view="interviewResponse-view">
+            <loader/>
+        </instance>
+        <collection id="responsesDc" class="com.non.ocat.entity.ResponseTypeConfig" view="_minimal">
+            <loader id="responsesLc">
+                <query>
+                    <![CDATA[select e from ocat_ResponseTypeConfig e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="interviewResponseDc">
+            <column width="250px">
+                <pickerField id="questionField" property="question">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+                <lookupPickerField id="responseField" optionsContainer="responsesDc" property="response"/>
+                <textArea id="textResponseField" property="textResponse" rows="5"/>
+                <pickerField id="interviewField" property="interview">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

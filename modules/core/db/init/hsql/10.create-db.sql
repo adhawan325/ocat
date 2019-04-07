@@ -159,3 +159,39 @@ create table OCAT_INTERVIEW_CONFIG (
     primary key (ID)
 )^
 -- end OCAT_INTERVIEW_CONFIG
+-- begin OCAT_INTERVIEW_RESPONSE
+create table OCAT_INTERVIEW_RESPONSE (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    QUESTION_ID varchar(36),
+    RESPONSE boolean,
+    TEXT_RESPONSE longvarchar,
+    INTERVIEW_ID varchar(36),
+    --
+    primary key (ID)
+)^
+-- end OCAT_INTERVIEW_RESPONSE
+-- begin OCAT_RESPONSE_TYPE_CONFIG
+create table OCAT_RESPONSE_TYPE_CONFIG (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    CONFIG_CODE varchar(255),
+    RESPONSE varchar(255),
+    --
+    primary key (ID)
+)^
+-- end OCAT_RESPONSE_TYPE_CONFIG

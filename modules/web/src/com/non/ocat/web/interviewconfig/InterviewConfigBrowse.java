@@ -5,7 +5,7 @@ import com.non.ocat.entity.InterviewConfig;
 
 @UiController("ocat_InterviewConfig.browse")
 @UiDescriptor("interview-config-browse.xml")
-@LookupComponent("table")
+@LookupComponent("interviewConfigsTable")
 @LoadDataBeforeShow
-public class InterviewConfigBrowse extends MasterDetailScreen<InterviewConfig> {
+public class InterviewConfigBrowse extends StandardLookup<InterviewConfig> {
 }

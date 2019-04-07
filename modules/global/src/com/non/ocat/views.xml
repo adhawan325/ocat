@@ -16,4 +16,15 @@
     <view entity="ocat_InterviewConfig" name="interviewConfig-view" extends="_local">
         <property name="parent" view="_minimal"/>
     </view>
+    <view entity="ocat_Questionnaire" name="questionnaire-view" extends="_local">
+        <property name="interviewSection" view="_minimal"/>
+        <property name="parent" view="_minimal"/>
+    </view>
+    <view entity="ocat_InterviewResponse" name="interviewResponse-view" extends="_local">
+        <property name="question" view="_minimal"/>
+        <property name="response" view="_minimal">
+            <property name="response"/>
+        </property>
+        <property name="interview" view="_minimal"/>
+    </view>
 </views>

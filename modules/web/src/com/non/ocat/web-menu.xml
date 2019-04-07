@@ -4,5 +4,9 @@
         <item screen="ocat_Interview.browse"/>
         <item screen="ocat_InterviewConfig.browse"/>
         <item screen="ocat_CWCase.browse"/>
+        <item screen="ocat_Questionnaire.browse"/>
+        <item screen="ocat_Client.browse"/>
+        <item screen="ocat_InterviewResponse.browse"/>
+        <item screen="ocat_ResponseTypeConfig.browse"/>
     </menu>
 </menu-config>

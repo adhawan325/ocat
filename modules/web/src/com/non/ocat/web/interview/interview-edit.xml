@@ -9,11 +9,14 @@
                   view="interview-view">
             <loader/>
         </instance>
-        <collection id="interviewConfigsDc" class="com.non.ocat.entity.InterviewConfig" view="interviewConfig-view">
-            <loader maxResults="500" id="interviewConfigsDl">
-                <query><![CDATA[select e from ocat_InterviewConfig e]]></query>
+        <collection id="interviewResponses"
+                    class="com.non.ocat.entity.InterviewResponse"
+                    view="interviewResponse-view">
+            <loader id="interviewResponsesDl">
+                <query><![CDATA[select i from ocat_InterviewResponse i where i.interview = :id]]></query>
             </loader>
         </collection>
+
     </data>
     <dialogMode height="600"
                 width="800"/>
@@ -36,13 +39,73 @@
         </form>
 
         <tabSheet id="interview">
-
-
+            <tab id="demographicsTab" caption = "Demographics">
+                <accordion id="demographics">
+                    <tab id="tabPreamble" caption="Preamble" margin="true" spacing="true">
+                        <label value="Preamble"/>
+                    </tab>
+                    <tab id="tabGeneralInformation" caption="General Information" margin="true" spacing="true">
+                        <label value="General Information"/>
+                        <table id="interviewResponsesTable" dataContainer="interviewResponses" editable="true"
+                               width="100%">
+                            <columns>
+                                <column id="question"/>
+                                <column id="response"/>
+                                <column id="textResponse"/>
+                            </columns>
+                            <rows/>
+                            <actions>
+                                <action id="edit" caption="Edit" type="edit"/>
+                            </actions>
+                        </table>
+                    </tab>
+                    <tab id="tabHouseholdComposition" caption="Household Composition" margin="true" spacing="true">
+                        <label value="Household Composition"/>
+                    </tab>
+                    <tab id="tabFinancesBenefits" caption="Finances/Benefits" margin="true" spacing="true">
+                        <label value="Finances/Benefits"/>
+                    </tab>
+                </accordion>
+            </tab>
+            <tab id="employmentTab" caption = "Employment">
+                <accordion id="employment">
+                    <tab id="tabJobHistory" caption="Job History" margin="true" spacing="true">
+                        <label value="Job History"/>
+                    </tab>
+                </accordion>
+            </tab>
+            <tab id="EducationTab" caption = "Education">
+                <accordion id="education">
+                    <tab id="tabHighestGrade" caption="Highest Grade" margin="true" spacing="true">
+                        <label value="Highest Grade"/>
+                    </tab>
+                    <tab id="tabDDC" caption="Diploma, Degree, Certificate" margin="true" spacing="true">
+                        <label value="Diploma, Degree, Certificate"/>
+                    </tab>
+                    <tab id="tabOtherEducation" caption="Other Education, Training, Certificate" margin="true" spacing="true">
+                        <label value="Other Education, Training, Certificate"/>
+                    </tab>
+                    <tab id="tabLearningNeeds" caption="Learning Needs" margin="true" spacing="true">
+                        <label value="Learning Needs"/>
+                    </tab>
+                    <tab id="tabIndicatorQuestions" caption="Indicator Questions" margin="true" spacing="true">
+                        <label value="Indicator Questions"/>
+                    </tab>
+                </accordion>
+            </tab>
+            <tab id="HousingTab" caption = "Housing">
+                <accordion id="housing">
+                    <tab id="tabCurrentHousing" caption="Current Housing" margin="true" spacing="true">
+                        <label value="Highest Grade"/>
+                    </tab>
+                    <tab id="tabHousingSituation" caption="Housing Situation" margin="true" spacing="true">
+                        <label value="Diploma, Degree, Certificate"/>
+                    </tab>
+                </accordion>
+            </tab>
         </tabSheet>
-
-
-
         <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
             <button action="windowClose"/>
         </hbox>
     </layout>

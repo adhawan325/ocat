@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://editorCaption"
+        focusComponent="form"
+        messagesPack="com.non.ocat.web.client">
+    <data>
+        <instance id="clientDc"
+                  class="com.non.ocat.entity.Client"
+                  view="client-view">
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="clientDc">
+            <column width="250px">
+                <textField id="firstNameField" property="firstName"/>
+                <textField id="lastNameField" property="lastName"/>
+                <dateField id="dateOfBirthField" property="dateOfBirth"/>
+                <textField id="cinField" property="cin"/>
+                <textField id="aucnField" property="aucn"/>
+                <textField id="ssnField" property="ssn"/>
+                <pickerField id="genderField" property="gender">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

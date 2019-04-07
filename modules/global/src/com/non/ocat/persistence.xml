@@ -11,5 +11,7 @@
         <class>com.non.ocat.entity.CaseStatusConfig</class>
         <class>com.non.ocat.entity.GenderConfig</class>
         <class>com.non.ocat.entity.InterviewConfig</class>
+        <class>com.non.ocat.entity.InterviewResponse</class>
+        <class>com.non.ocat.entity.ResponseTypeConfig</class>
     </persistence-unit>
 </persistence>

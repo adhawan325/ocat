@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://browseCaption"
+        focusComponent="interviewResponsesTable"
+        messagesPack="com.non.ocat.web.interviewresponse">
+    <data readOnly="true">
+        <collection id="interviewResponsesDc"
+                    class="com.non.ocat.entity.InterviewResponse"
+                    view="interviewResponse-view">
+            <loader id="interviewResponsesDl">
+                <query>
+                    <![CDATA[select e from ocat_InterviewResponse e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="interviewResponsesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="interviewResponsesTable"
+                dataLoader="interviewResponsesDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="interviewResponsesTable"
+                    width="100%"
+                    dataContainer="interviewResponsesDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="question"/>
+                <column id="response"/>
+                <column id="textResponse"/>
+                <column id="interview"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="interviewResponsesTable.create"/>
+                <button id="editBtn" action="interviewResponsesTable.edit"/>
+                <button id="removeBtn" action="interviewResponsesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

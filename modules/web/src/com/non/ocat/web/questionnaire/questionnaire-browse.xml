@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
         caption="msg://browseCaption"
-        focusComponent="interviewConfigsTable"
-        messagesPack="com.non.ocat.web.interviewconfig">
+        focusComponent="questionnairesTable"
+        messagesPack="com.non.ocat.web.questionnaire">
     <data readOnly="true">
-        <collection id="interviewConfigsDc"
-                    class="com.non.ocat.entity.InterviewConfig"
-                    view="interviewConfig-view">
-            <loader id="interviewConfigsDl">
+        <collection id="questionnairesDc"
+                    class="com.non.ocat.entity.Questionnaire"
+                    view="questionnaire-view">
+            <loader id="questionnairesDl">
                 <query>
-                    <![CDATA[select e from ocat_InterviewConfig e]]>
+                    <![CDATA[select e from ocat_Questionnaire e]]>
                 </query>
             </loader>
         </collection>
     </data>
     <dialogMode height="600"
                 width="800"/>
-    <layout expand="interviewConfigsTable"
+    <layout expand="questionnairesTable"
             spacing="true">
         <filter id="filter"
-                applyTo="interviewConfigsTable"
-                dataLoader="interviewConfigsDl">
+                applyTo="questionnairesTable"
+                dataLoader="questionnairesDl">
             <properties include=".*"/>
         </filter>
-        <treeTable id="interviewConfigsTable"
+        <treeTable id="questionnairesTable"
                    width="100%"
-                   dataContainer="interviewConfigsDc"
+                   dataContainer="questionnairesDc"
                    hierarchyProperty="parent">
             <actions>
                 <action id="create" type="create"/>
@@ -33,19 +33,19 @@
                 <action id="remove" type="remove"/>
             </actions>
             <columns>
-                <column id="itemCode"/>
-                <column id="itemName"/>
+                <column id="interviewSection"/>
+                <column id="questionText"/>
+                <column id="needsText"/>
                 <column id="parent"/>
                 <column id="beginDate"/>
                 <column id="endDate"/>
-                <column id="itemType"/>
             </columns>
             <rowsCount/>
             <buttonsPanel id="buttonsPanel"
                           alwaysVisible="true">
-                <button id="createBtn" action="interviewConfigsTable.create"/>
-                <button id="editBtn" action="interviewConfigsTable.edit"/>
-                <button id="removeBtn" action="interviewConfigsTable.remove"/>
+                <button id="createBtn" action="questionnairesTable.create"/>
+                <button id="editBtn" action="questionnairesTable.edit"/>
+                <button id="removeBtn" action="questionnairesTable.remove"/>
             </buttonsPanel>
         </treeTable>
         <hbox id="lookupActions" spacing="true" visible="false">

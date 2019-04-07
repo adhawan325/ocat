@@ -1,10 +1,12 @@
 package com.non.ocat.entity;
 
+import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 
 import javax.persistence.*;
 import java.util.Date;
 
+@NamePattern("%s|questionText")
 @Table(name = "OCAT_QUESTIONNAIRE")
 @Entity(name = "ocat_Questionnaire")
 public class Questionnaire extends StandardEntity {
