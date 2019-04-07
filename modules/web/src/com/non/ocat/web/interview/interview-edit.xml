@@ -9,13 +9,21 @@
                   view="interview-view">
             <loader/>
         </instance>
-        <collection id="interviewResponses"
+        <collection id="generalInformationInterviewResponses"
                     class="com.non.ocat.entity.InterviewResponse"
                     view="interviewResponse-view">
-            <loader id="interviewResponsesDl">
-                <query><![CDATA[select i from ocat_InterviewResponse i where i.interview = :id]]></query>
+            <loader id="generalInformationInterviewResponsesDl">
+                <query><![CDATA[select i from ocat_InterviewResponse i where i.interview = :id and i.question.interviewSection.itemCode = :itemCode]]></query>
             </loader>
         </collection>
+        <collection id="learningNeedsInterviewResponses"
+                    class="com.non.ocat.entity.InterviewResponse"
+                    view="interviewResponse-view">
+            <loader id="learningNeedsInterviewResponsesDl">
+                <query><![CDATA[select i from ocat_InterviewResponse i where i.interview = :id and i.question.interviewSection.itemCode = :itemCode]]></query>
+            </loader>
+        </collection>
+
 
     </data>
     <dialogMode height="600"
@@ -35,6 +43,12 @@
                         <action id="clear" type="picker_clear"/>
                     </actions>
                 </pickerField>
+                <pickerField editable="false" id="interviewerField" property="interviewer">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
             </column>
         </form>
 
@@ -42,16 +56,15 @@
             <tab id="demographicsTab" caption = "Demographics">
                 <accordion id="demographics">
                     <tab id="tabPreamble" caption="Preamble" margin="true" spacing="true">
-                        <label value="Preamble"/>
+                        <label id="preamble" value="Preamble"/>
                     </tab>
                     <tab id="tabGeneralInformation" caption="General Information" margin="true" spacing="true">
-                        <label value="General Information"/>
-                        <table id="interviewResponsesTable" dataContainer="interviewResponses" editable="true"
+                        <table id="generalInformationTable" dataContainer="generalInformationInterviewResponses" editable="true"
                                width="100%">
                             <columns>
                                 <column id="question"/>
-                                <column id="response"/>
-                                <column id="textResponse"/>
+                                <column id="response" editable="true"/>
+                                <column id="textResponse" editable="true"/>
                             </columns>
                             <rows/>
                             <actions>
@@ -86,7 +99,18 @@
                         <label value="Other Education, Training, Certificate"/>
                     </tab>
                     <tab id="tabLearningNeeds" caption="Learning Needs" margin="true" spacing="true">
-                        <label value="Learning Needs"/>
+                        <table id="learningNeedsTable" dataContainer="learningNeedsInterviewResponses" editable="true"
+                               width="100%">
+                            <columns>
+                                <column id="question"/>
+                                <column id="response" editable="true"/>
+                                <column id="textResponse" editable="true"/>
+                            </columns>
+                            <rows/>
+                            <actions>
+                                <action id="edit" caption="Edit" type="edit"/>
+                            </actions>
+                        </table>
                     </tab>
                     <tab id="tabIndicatorQuestions" caption="Indicator Questions" margin="true" spacing="true">
                         <label value="Indicator Questions"/>

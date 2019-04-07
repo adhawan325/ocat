@@ -13,7 +13,7 @@ import javax.validation.constraints.NotNull;
 @Table(name = "OCAT_CW_CASE")
 @Entity(name = "ocat_CWCase")
 public class CWCase extends StandardEntity {
-    @Lookup(type = LookupType.SCREEN, actions = {"lookup"})
+    @Lookup(type = LookupType.DROPDOWN, actions = {"lookup"})
     @NotNull
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "CLIENT_ID")

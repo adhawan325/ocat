@@ -2,11 +2,14 @@
 <menu-config xmlns="http://schemas.haulmont.com/cuba/menu.xsd">
     <menu id="application-ocat" insertBefore="administration">
         <item screen="ocat_Interview.browse"/>
-        <item screen="ocat_InterviewConfig.browse"/>
         <item screen="ocat_CWCase.browse"/>
-        <item screen="ocat_Questionnaire.browse"/>
         <item screen="ocat_Client.browse"/>
-        <item screen="ocat_InterviewResponse.browse"/>
+    </menu>
+    <menu id="admin-ocat" insertBefore="administration">
+        <item screen="ocat_InterviewConfig.browse"/>
+        <item screen="ocat_Questionnaire.browse"/>
         <item screen="ocat_ResponseTypeConfig.browse"/>
+        <item screen="ocat_GenderConfig.browse"/>
+        <item screen="ocat_CaseStatusConfig.browse"/>
     </menu>
 </menu-config>

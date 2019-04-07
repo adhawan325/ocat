@@ -112,6 +112,7 @@ create table OCAT_INTERVIEW (
     --
     CLIENT_ID varchar(36),
     RELATED_CASE_ID varchar(36),
+    INTERVIEWER_ID varchar(36),
     --
     primary key (ID)
 )^

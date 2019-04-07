@@ -1,0 +1,5 @@
+@import "havana-ext";
+
+@mixin com_non_ocat {
+  @include com_non_ocat-havana-ext;
+}

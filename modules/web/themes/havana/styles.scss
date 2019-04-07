@@ -1,0 +1,39 @@
+@import "havana-defaults";
+@import "com.non.ocat/havana-ext-defaults";
+@import "app-components";
+@import "com.non.ocat/havana-ext";
+
+.havana {
+  // include auto-generated app components SCSS
+  @include app_components;
+
+  @include com_non_ocat-havana-ext;
+    .c-login-panel {
+      background-color: rgba(255,255,255,0.8);
+      width: 100%;
+      margin: 0;
+      border: 0;
+    }
+  }
+
+  @media screen and (max-width: 1200px) {
+    .c-login-main-layout {
+      background: url("branding/background-small.jpg") !important;
+    }
+  }
+  @media screen and (min-width: 1200px) {
+    .c-login-main-layout {
+      background: url("branding/background-medium.jpg") !important;
+    }
+  }
+
+  @media screen and (min-width: 1800px) {
+    .c-login-main-layout {
+      background: url("branding/background-large.jpg") !important;
+    }
+}
+
+.v-slot-c-powered-by {
+  background-color: rgba(255,255,255,0.8);
+  padding-top: 20px;
+}
