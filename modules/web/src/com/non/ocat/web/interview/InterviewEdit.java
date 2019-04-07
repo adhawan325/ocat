@@ -5,6 +5,7 @@ import com.haulmont.cuba.core.global.*;
 import com.haulmont.cuba.gui.components.Label;
 import com.haulmont.cuba.gui.components.PickerField;
 import com.haulmont.cuba.gui.components.Table;
+import com.haulmont.cuba.gui.components.TextField;
 import com.haulmont.cuba.gui.model.CollectionContainer;
 import com.haulmont.cuba.gui.model.CollectionLoader;
 import com.haulmont.cuba.gui.screen.*;
@@ -38,14 +39,10 @@ public class InterviewEdit extends StandardEditor<Interview> {
     private CollectionContainer<InterviewResponse> learningNeedsInterviewResponses;
 
     @Inject
-    private PickerField<User> interviewerField;
+    private TextField<User> interviewerField;
 
     @Subscribe
     protected void onInitEntity(InitEntityEvent<Interview> event) {
-        //saveRecord();
-        CommitContext context = new CommitContext();
-        context.addInstanceToCommit(getEditedEntity());
-        interviewerField.setValue(AppBeans.get(UserSessionSource.class).getUserSession().getUser());
         generalInformationInterviewResponses.setItems(populateQuestions("tabGeneralInformation", true));
         learningNeedsInterviewResponses.setItems(populateQuestions("tabLearningNeeds", false));
     }
@@ -55,7 +52,7 @@ public class InterviewEdit extends StandardEditor<Interview> {
     protected void onBeforeShow(BeforeShowEvent event) {
         generalInformationInterviewResponsesDl.setParameter("id", getEditedEntity());
         generalInformationInterviewResponsesDl.setParameter("itemCode", "tabGeneralInformation");
-
+        interviewerField.setValue(AppBeans.get(UserSessionSource.class).getUserSession().getUser());
         learningNeedsInterviewResponsesDl.setParameter("id", getEditedEntity());
         learningNeedsInterviewResponsesDl.setParameter("itemCode", "tabLearningNeeds");
         getScreenData().loadAll();
@@ -63,22 +60,11 @@ public class InterviewEdit extends StandardEditor<Interview> {
         preamble.setValue("<h1> Please ensure that the client has received a copy of the OCAT Rights and Privacy Overview Form </h1>");
     }
 
-    private Interview saveRecord()
-    {
-            System.out.println("saving");
-            // need to create questions
-        CommitContext commitContext = new CommitContext();
-        commitContext.addInstanceToCommit(this.getEditedEntity());
-        Set<Entity> thisEntity = dataManager.commit(commitContext);
-        return(Interview)thisEntity.iterator().next();
-    }
-
     private List<InterviewResponse> populateQuestions(String tab, boolean isFirst)
     {
         LoadContext<Questionnaire> loadContext = LoadContext.create(Questionnaire.class);
         loadContext.setQuery(new LoadContext.Query("select i from ocat_Questionnaire i where i.interviewSection.itemCode = :itemCode").setParameter("itemCode", tab));
         List<Questionnaire> questions = dataManager.loadList(loadContext);
-        System.out.println(questions.size());
         List<InterviewResponse> responses = new ArrayList<InterviewResponse>();
 
         LoadContext<ResponseTypeConfig> responseTypeConfigLoadContext = LoadContext.create(ResponseTypeConfig.class);
@@ -87,6 +73,7 @@ public class InterviewEdit extends StandardEditor<Interview> {
         CommitContext context = new CommitContext();
         if( isFirst )
         {
+            getEditedEntity().setInterviewer(AppBeans.get(UserSessionSource.class).getUserSession().getUser());
             context.addInstanceToCommit(getEditedEntity());
         }
         for( Questionnaire question : questions )

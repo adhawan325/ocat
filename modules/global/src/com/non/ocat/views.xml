@@ -9,7 +9,7 @@
         <property name="owner" view="_minimal"/>
         <property name="status" view="_minimal"/>
     </view>
-    <view entity="ocat_Interview" name="interview-view" extends="_local">
+    <view entity="ocat_Interview" name="interview-view" extends="_local" systemProperties="true">
         <property name="client" view="_minimal"/>
         <property name="relatedCase" view="_minimal"/>
         <property name="interviewer" view="_minimal"/>

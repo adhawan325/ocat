@@ -7,7 +7,7 @@
         <collection id="interviewsDc"
                     class="com.non.ocat.entity.Interview"
                     view="interview-view">
-            <loader id="interviewsDl">
+            <loader id="interviewsDl" maxResults="500">
                 <query>
                     <![CDATA[select e from ocat_Interview e]]>
                 </query>
@@ -33,6 +33,7 @@
             </actions>
             <columns>
                 <column id="client"/>
+                <column id="interviewer"/>
                 <column id="relatedCase"/>
             </columns>
             <rowsCount/>
@@ -41,6 +42,7 @@
                 <button id="createBtn" action="interviewsTable.create"/>
                 <button id="editBtn" action="interviewsTable.edit"/>
                 <button id="removeBtn" action="interviewsTable.remove"/>
+                <button id="generateASR" caption="Generate ASR"/>
             </buttonsPanel>
         </groupTable>
         <hbox id="lookupActions" spacing="true" visible="false">
