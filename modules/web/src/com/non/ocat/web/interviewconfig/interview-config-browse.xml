@@ -14,8 +14,6 @@
             </loader>
         </collection>
     </data>
-    <dialogMode height="600"
-                width="800"/>
     <layout expand="interviewConfigsTable"
             spacing="true">
         <filter id="filter"
@@ -25,6 +23,7 @@
         </filter>
         <treeTable id="interviewConfigsTable"
                    width="100%"
+                   height="100%"
                    dataContainer="interviewConfigsDc"
                    hierarchyProperty="parent">
             <actions>

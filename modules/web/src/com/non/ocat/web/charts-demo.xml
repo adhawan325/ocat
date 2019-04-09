@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
         xmlns:chart="http://schemas.haulmont.com/charts/charts.xsd"
-        caption="msg://caption"
+        caption="Charts Demo"
         messagesPack="com.non.ocat.web">
     <data>
+        <collection id="cWCasesDc" class="com.non.ocat.entity.CWCase" view="cWCase-view">
+            <loader id="cWCasesDl">
+                <query><![CDATA[select e from ocat_CWCase e]]></query>
+            </loader>
+        </collection>
     </data>
     <layout>
 
@@ -11,30 +16,13 @@
             <columns count="2"/>
             <rows>
                 <row>
-                    <chart:pieChart id="pieChart"
-                                    titleField="key"
-                                    valueField="value" caption="Cases by Status" rowspan="1" colspan="1">
-                        <chart:data>
-                            <chart:item>
-                                <chart:property name="key" value="New"/>
-                                <chart:property name="value" value="70" type="int"/>
-                            </chart:item>
-                            <chart:item>
-                                <chart:property name="key" value="Interview Scheduled"/>
-                                <chart:property name="value" value="20" type="int"/>
-                            </chart:item>
-                            <chart:item>
-                                <chart:property name="key" value="No Show"/>
-                                <chart:property name="value" value="10" type="int"/>
-                            </chart:item>
-                        </chart:data>
-                        <chart:export fileName="case-by-status" position="TOP_RIGHT">
-
-                        </chart:export>
-                    </chart:pieChart>
+                    <hbox>
                     <chart:pieChart id="pieChart2"
+                                    angle="30"
+                                    depth3D="15"
                                     titleField="key"
-                                    valueField="value" caption="Cases by Status" rowspan="1" colspan="1">
+                                    valueField="value" caption="Cases by Status" rowspan="1" colspan="1"
+                                    box.expandRatio="0.0">
                         <chart:data>
                             <chart:item>
                                 <chart:property name="key" value="New"/>
@@ -58,8 +46,8 @@
                             </chart:menu>
                         </chart:export>
                     </chart:pieChart>
-                </row>
-                <row>
+                    </hbox>
+                    <hbox>
                     <chart:serialChart additionalFields="optional"
                                        addClassNames="true"
                                        categoryField="year"
@@ -78,8 +66,13 @@
                                 <chart:property name="value" value="15000" type="int"/>
                             </chart:item>
                         </chart:data>
-                        <chart:export fileName="cases-by-year" position="TOP_RIGHT">
-
+                        <chart:export fileName="my-chart" position="TOP_RIGHT">
+                            <chart:menu>
+                                <chart:item label="PNG" title="Save as PNG" format="PNG"/>
+                                <chart:item label="JPG" title="Save as JPG" format="JPG"/>
+                                <chart:item label="CSV" title="Save as CSV" format="CSV"/>
+                                <chart:item label="PDF" title="Save as PDF" format="PDF"/>
+                            </chart:menu>
                         </chart:export>
                         <chart:graphs>
                             <chart:graph title="Cases By Year"
@@ -87,7 +80,19 @@
                                          fillAlphas=".8"
                                          valueField="value" />
                         </chart:graphs>
+
                     </chart:serialChart>
+                    </hbox>
+                </row>
+                <row colspan="2">
+                <table width="90%" dataContainer="cWCasesDc" rowspan="1" colspan="2">
+                    <columns>
+                        <column id="client"/>
+                        <column id="owner"/>
+                        <column id="status"/>
+                    </columns>
+                    <rows/>
+                </table>
                 </row>
             </rows>
         </grid>

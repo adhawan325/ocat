@@ -9,7 +9,7 @@ buildscript {
                 password(rootProject.hasProperty('repoPass') ? rootProject['repoPass'] : 'cuba123')
             }
         }
-        
+
     }
     dependencies {
         classpath "com.haulmont.gradle:cuba-plugin:$cubaVersion"
@@ -40,6 +40,7 @@ cuba {
 dependencies {
     appComponent("com.haulmont.cuba:cuba-global:$cubaVersion")
     appComponent("com.haulmont.charts:charts-global:$cubaVersion")
+    appComponent("com.haulmont.fts:fts-global:$cubaVersion")
 }
 
 def hsql = 'org.hsqldb:hsqldb:2.4.1'
@@ -75,6 +76,9 @@ configure(globalModule) {
         main {
             enabled = true
         }
+    }
+    jar {
+        from sourceSets.main.allJava
     }
 }
 
@@ -166,8 +170,23 @@ configure(webModule) {
             }
         }
     }
+    task copyLogo(type: Copy) {
+        from 'themes/halo/images/platform-logo.png'
+        into "$cuba.tomcat.dir/work/app-core/filestorage/2015/04/01"
+        rename 'platform-logo.png', '61a6a1ee-f13a-f44f-0201-c2f9b3288305.png'
+    }
 
-    task deploy(dependsOn: [assemble, cleanConf], type: CubaDeployment) {
+    task copyImages(type: Copy) {
+        from 'themes/halo/images/customer-standard.svg'
+        into "$cuba.tomcat.dir/work/app-core/filestorage/2017/07/19"
+        rename 'customer-standard.svg', 'efc56835-5f5c-6614-bf74-e26e48e2ac5f.svg'
+
+        from 'themes/halo/images/cuba-logo.png'
+        into "$cuba.tomcat.dir/work/app-core/filestorage/2017/07/19"
+        rename 'cuba-logo.png', 'a2ba9e37-9f05-3ee3-4041-e838d505415c.png'
+    }
+
+    task deploy(dependsOn: [assemble, cleanConf, copyLogo, copyImages], type: CubaDeployment) {
         appName = "${modulePrefix}"
         appJars(modulePrefix + '-global', modulePrefix + '-web')
     }
@@ -177,6 +196,11 @@ configure(webModule) {
     task deployThemes(type: CubaDeployThemeTask, dependsOn: buildScssThemes)
 
     assemble.dependsOn buildScssThemes
+    jar {
+        from sourceSets.main.allJava
+        // copy sources from core to show the service classes for samples in the ui
+        from coreModule.sourceSets.main.allJava
+    }
 
     task themesJar(type: Jar) {
         from file('themes')

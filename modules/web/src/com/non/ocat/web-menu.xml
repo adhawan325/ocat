@@ -1,16 +1,38 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <menu-config xmlns="http://schemas.haulmont.com/cuba/menu.xsd">
-    <menu id="application-ocat" insertBefore="administration">
-        <item screen="ocat_Interview.browse"/>
+
+    <menu id="application-ocat" insertBefore="administration" expanded="true">
         <item screen="ocat_CWCase.browse"/>
+        <item screen="ocat_Interview.browse"/>
         <item screen="ocat_Client.browse"/>
-        <item screen="ocat_ChartsDemo"/>
     </menu>
-    <menu id="admin-ocat" insertBefore="administration">
+    <menu description="Charts" id="charts" insertAfter="application-ocat" expanded="true">
+        <item screen="ocat_ChartsDemo"/>
+        <item screen="pie-chart" description="Pie Chart"/>
+        <item screen="xy-dateaxis-chart"/>
+    </menu>
+    <menu id="admin-ocat" insertAfter="charts" expanded="true">
         <item screen="ocat_InterviewConfig.browse"/>
         <item screen="ocat_Questionnaire.browse"/>
         <item screen="ocat_ResponseTypeConfig.browse"/>
         <item screen="ocat_GenderConfig.browse"/>
         <item screen="ocat_CaseStatusConfig.browse"/>
+    </menu>
+    <menu id="LearningCenter" insertAfter="admin-ocat">
+        <item screen="sec$SessionAttribute.edit"/>
+    </menu>
+    <menu id="Resources" insertAfter="LearningCenter">
+        <item screen="backgroundWorkProgressWindow"/>
+    </menu>
+    <menu id="help" insertAfter="Resources" expanded="true">
+        <item screen="settings"/>
+        <item screen="aboutWindow"/>
+        <item screen="sec$User.browse"/>
+        <item screen="sec$Role.browse"/>
+        <item screen="sec$ScreenHistory.browse"/>
+        <item screen="sec$User.changePassword"/>
+        <item screen="jmxConsole"/>
+        <item screen="appProperties"/>
+        <item screen="sys$ScheduledTask.browse"/>
     </menu>
 </menu-config>

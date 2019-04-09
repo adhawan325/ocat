@@ -11,6 +11,7 @@ import com.haulmont.cuba.gui.model.CollectionLoader;
 import com.haulmont.cuba.gui.screen.*;
 import com.haulmont.cuba.security.entity.User;
 import com.haulmont.cuba.web.gui.components.table.TableItemPropertyWrapper;
+import com.haulmont.cuba.web.sys.SideMenuBuilder;
 import com.non.ocat.entity.Interview;
 import com.non.ocat.entity.InterviewResponse;
 import com.non.ocat.entity.Questionnaire;
@@ -85,8 +86,6 @@ public class InterviewEdit extends StandardEditor<Interview> {
             responses.add(response);
             context.addInstanceToCommit(response);
         }
-
-
         dataManager.commit(context);
         return responses;
     }

@@ -13,5 +13,6 @@
         <class>com.non.ocat.entity.InterviewConfig</class>
         <class>com.non.ocat.entity.InterviewResponse</class>
         <class>com.non.ocat.entity.ResponseTypeConfig</class>
+        <class>com.non.ocat.entity.CountryLitres</class>
     </persistence-unit>
 </persistence>

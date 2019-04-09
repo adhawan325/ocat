@@ -15,12 +15,12 @@
     <layout expand="editActions" spacing="true">
         <form id="form" dataContainer="clientDc">
             <column width="250px">
-                <textField id="firstNameField" property="firstName"/>
-                <textField id="lastNameField" property="lastName"/>
-                <dateField id="dateOfBirthField" property="dateOfBirth"/>
-                <textField id="cinField" property="cin"/>
-                <textField id="aucnField" property="aucn"/>
-                <textField id="ssnField" property="ssn"/>
+                <textField id="firstNameField" property="firstName" caption="First Name"/>
+                <textField id="lastNameField" property="lastName" caption="Last Name"/>
+                <dateField id="dateOfBirthField" property="dateOfBirth" caption="Date of Birth"/>
+                <textField id="cinField" property="cin" caption="CIN"/>
+                <textField id="aucnField" property="aucn" caption="AUCN"/>
+                <textField id="ssnField" property="ssn" caption="SSN"/>
                 <pickerField id="genderField" property="gender">
                     <actions>
                         <action id="lookup" type="picker_lookup"/>
